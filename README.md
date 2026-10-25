@@ -20,7 +20,7 @@ CSR available = on hand - reserved - Amazon hold - Walmart hold
 
 CSR allocation is performed with a guarded database update that checks availability and increments the reserved quantity in one statement. InnoDB serializes concurrent updates to the same inventory row. The reservation and order insert run in one Spring transaction, so they either both commit or both roll back. This approach keeps correctness in the database and is sufficient because the allocation rule is local to one inventory row.
 
-The maintained invariant is `reserved + Amazon hold + Walmart hold <= on hand`. After a reservation succeeds, the CSR order is created directly in the `ALLOCATED` state.
+The complete inventory relationship is `on hand = reserved + Amazon hold + Walmart hold + CSR available`. The database also enforces `reserved + Amazon hold + Walmart hold <= on hand` to prevent overselling. After a reservation succeeds, the CSR order is created directly in the `ALLOCATED` state.
 
 The demo covers three main scenarios:
 
