@@ -12,7 +12,6 @@ public record OrderRow(
         @ColumnName("external_order_id") String externalOrderId,
         int quantity,
         String status,
-        @ColumnName("is_demo") boolean isDemo,
         @ColumnName("created_at") Timestamp createdAt,
         @ColumnName("updated_at") Timestamp updatedAt
 ) {

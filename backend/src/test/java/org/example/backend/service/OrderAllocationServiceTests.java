@@ -41,7 +41,6 @@ class OrderAllocationServiceTests {
                 null,
                 request.quantity(),
                 "ALLOCATED",
-                false,
                 Timestamp.from(now),
                 Timestamp.from(now)
         );

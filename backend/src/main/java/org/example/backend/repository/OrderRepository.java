@@ -17,8 +17,8 @@ public interface OrderRepository {
 
     @SqlUpdate("""
             INSERT INTO customer_order
-                (sku, facility, channel, quantity, status, is_demo)
-            VALUES (:sku, :facility, 'CSR', :qty, 'ALLOCATED', FALSE)
+                (sku, facility, channel, quantity, status)
+            VALUES (:sku, :facility, 'CSR', :qty, 'ALLOCATED')
             """)
     @GetGeneratedKeys("id")
     long insertCsrAllocated(
@@ -29,7 +29,7 @@ public interface OrderRepository {
 
     @SqlQuery("""
             SELECT id, sku, facility, channel, external_order_id, quantity,
-                   status, is_demo, created_at, updated_at
+                   status, created_at, updated_at
             FROM customer_order
             WHERE id = :id
             """)
@@ -37,7 +37,7 @@ public interface OrderRepository {
 
     @SqlQuery("""
             SELECT id, sku, facility, channel, external_order_id, quantity,
-                   status, is_demo, created_at, updated_at
+                   status, created_at, updated_at
             FROM customer_order
             ORDER BY created_at DESC, id DESC
             LIMIT :limit

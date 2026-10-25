@@ -12,7 +12,6 @@ public record OrderResponse(
         String externalOrderId,
         int quantity,
         String status,
-        boolean isDemo,
         Instant createdAt,
         Instant updatedAt
 ) {
@@ -25,7 +24,6 @@ public record OrderResponse(
                 row.externalOrderId(),
                 row.quantity(),
                 row.status(),
-                row.isDemo(),
                 row.createdAt().toInstant(),
                 row.updatedAt().toInstant()
         );

@@ -108,8 +108,8 @@ final class TestInventoryFixture {
         for (int index = 0; index < count; index++) {
             jdbcTemplate.update("""
                     INSERT INTO customer_order
-                        (sku, facility, channel, quantity, status, is_demo)
-                    VALUES (?, ?, 'HISTORICAL', 1, 'ALLOCATED', TRUE)
+                        (sku, facility, channel, quantity, status)
+                    VALUES (?, ?, 'HISTORICAL', 1, 'ALLOCATED')
                     """, sku, facility);
         }
     }
