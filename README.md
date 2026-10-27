@@ -34,6 +34,12 @@ The 10 white-shirt and 3 black-shirt historical orders are sample records create
 
 Requirements: JDK 17, MySQL 8+, and Node.js 20+.
 
+Make sure MySQL is running, then create the application database (enter your MySQL password when prompted):
+
+```bash
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS oms_takehome;"
+```
+
 Set the database credentials before starting the backend:
 
 ```bash
@@ -80,9 +86,10 @@ curl -X POST http://localhost:8080/api/orders \
 
 ## Tests
 
-The backend test suite uses the separate `oms_takehome_test` database. It covers validation, insufficient inventory, transaction rollback, and concurrent allocation.
+The backend test suite uses the separate `oms_takehome_test` database. It covers validation, insufficient inventory, transaction rollback, and concurrent allocation. Create that database before running the tests:
 
 ```bash
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS oms_takehome_test;"
 cd backend
 ./mvnw test
 ```
